@@ -1,5 +1,5 @@
-from base import ApiResponse, SpbuApi
-from study_divisions import StudyDivisionsApi
+from spbu_api.base import ApiResponse, SpbuApi
+from spbu_api.study_divisions import StudyDivisionsApi
 
 
 __all__ = [
