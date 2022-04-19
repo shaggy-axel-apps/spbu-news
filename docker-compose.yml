@@ -2,7 +2,6 @@ version: '3.3'
 
 services:
   bot:
-    image: python:3.9
     container_name: ${PROJECT_NAME}-bot
     stop_signal: SIGINT
     build:
