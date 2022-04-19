@@ -20,9 +20,9 @@ class ApiResponse(NamedTuple):
 class SpbuApi:
     def __init__(self):
         self.API = SPBU_API
-    
+
     def send_query(self, api: str, **params) -> ApiResponse:
-        response = req.get(api.format(**params))        
+        response = req.get(api.format(**params))
         return ApiResponse(
             code=response.status_code,
             status=codes.get(response.status_code, ("unknown",))[0],
