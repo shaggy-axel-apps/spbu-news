@@ -1,0 +1,2 @@
+aiogram~=2.18
+aioredis~=2.0
