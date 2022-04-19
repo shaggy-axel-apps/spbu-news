@@ -18,12 +18,14 @@ from={FROM}
 &[transfers={TRANSFERS}]
 """
 
-# PARAMETRS
+# REQUIRED PARAMETRS
 FROM = ""             # <код станции отправления>
 TO = ""               # <код станции прибытия>
+API_KEY = ""          # <ключ>
+
+# NOT-REQUIRED PARAMETRS
 FORMAT = ""           # <формат — XML или JSON>
 LANG = ""             # <язык>
-API_KEY = ""          # <ключ>
 DATE = ""             # <дата>
 TRANSPORT_TYPES = ""  # <тип транспорта>
 SYSTEM = ""           # <система кодирования параметров to и from>
