@@ -1,7 +1,7 @@
-from base import SpbuApi
+from base import ApiResponse, SpbuApi
 from study_divisions import StudyDivisionsApi
 
 
 __all__ = [
-    "SpbuApi", "StudyDivisionsApi"
+    "ApiResponse", "SpbuApi", "StudyDivisionsApi"
 ]
