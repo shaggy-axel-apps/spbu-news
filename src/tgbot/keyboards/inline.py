@@ -6,7 +6,15 @@ from spbu_api import StudyDivisionsApi
 async def start_keyboard() -> InlineKeyboardMarkup:
     keyboard = InlineKeyboardMarkup()
     keyboard.add(InlineKeyboardButton(
-        "Расписание", callback_data=f"division_pages#1"))
+        "Расписание автобусов", callback_data="autobus_pages#1"))
+    keyboard.row(InlineKeyboardButton(
+        "Расписание занятий", callback_data="division_pages#1"))
+    keyboard.add(InlineKeyboardButton(
+        "События", callback_data="event_pages#1"))
+    keyboard.row(InlineKeyboardButton(
+        "Info List", callback_data="spbu_info"))
+    keyboard.add(InlineKeyboardButton(
+        "Аккаунт", callback_data="account_info"))
     return keyboard
 
 

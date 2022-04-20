@@ -7,8 +7,8 @@ from tgbot.keyboards.paginator import InlineKeyboardPaginator
 
 def count_pages(data: Iterable) -> int:
     if len(data) % 10 == 0:
-        return len(data)//10
-    return len(data)//10 + 1
+        return len(data) // 10
+    return len(data) // 10 + 1
 
 
 def fill_paginator(
