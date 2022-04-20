@@ -41,12 +41,11 @@ class StudyDivisionsApi(SpbuApi):
     async def get_programs(self, alias: str) -> list[Program]:
         """ Gets study programs with levels for a given study division """
         response: ApiResponse = await self.send_query(
-            "{api}{alias}programs/levels/",
-            api=self.API, alias=alias
+            f"{self.API}{alias}/programs/levels/"
         )
         if 200 <= response.code and response.code < 400:
             programs = []
-            for level in response.response:
+            for level in await response.response:
                 study_level_name = level["StudyLevelName"]
                 has_courses = level["HasCourse6"]
                 for program in level["StudyProgramCombinations"]:
