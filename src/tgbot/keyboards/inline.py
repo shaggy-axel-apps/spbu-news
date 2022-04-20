@@ -5,10 +5,8 @@ from spbu_api import StudyDivisionsApi
 
 async def start_keyboard() -> InlineKeyboardMarkup:
     keyboard = InlineKeyboardMarkup()
-    division_api = StudyDivisionsApi()
-    for division in await division_api.get_all():
-        keyboard.add(InlineKeyboardButton(
-            division.name, callback_data=f"division:{division.alias}"))
+    keyboard.add(InlineKeyboardButton(
+        "Расписание", callback_data=f"division_pages#1"))
     return keyboard
 
 
