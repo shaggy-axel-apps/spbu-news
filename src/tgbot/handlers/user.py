@@ -6,7 +6,7 @@ from tgbot.keyboards import start_keyboard
 
 async def user_start(message: Message):
     keyboard = await start_keyboard()
-    await message.answer("Hello, user!", reply_markup=keyboard)
+    await message.answer("Меню", reply_markup=keyboard)
     await message.bot.delete_message(message.chat.id, message.message_id)
 
 
