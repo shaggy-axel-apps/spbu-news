@@ -26,6 +26,7 @@ class StudyDivisionsApi(SpbuApi):
         self.API = f"{self.API}study/divisions/"
 
     async def get_all(self) -> Union[list[Division], str]:
+        """ Gets study divisions """
         response = await self.send_query(self.API)
         if 200 <= response.code and response.code < 400:
             divisions = []
