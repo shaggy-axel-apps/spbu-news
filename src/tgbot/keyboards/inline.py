@@ -14,8 +14,7 @@ async def start_keyboard() -> InlineKeyboardMarkup:
         InlineKeyboardButton(
             "События", callback_data="event_pages#1"),
         InlineKeyboardButton(
-            "Info List", callback_data="spbu_info")
-        )
+            "Info List", callback_data="spbu_info"))
     keyboard.add(InlineKeyboardButton(
         "Аккаунт", callback_data="account_info"))
     return keyboard
