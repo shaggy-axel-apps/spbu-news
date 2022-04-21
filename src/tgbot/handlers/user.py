@@ -1,9 +1,13 @@
 from aiogram import Dispatcher
 from aiogram.types import Message
 
+from tgbot.keyboards import start_keyboard
+
 
 async def user_start(message: Message):
-    await message.reply("Hello, user!")
+    keyboard = await start_keyboard()
+    await message.answer("Меню", reply_markup=keyboard)
+    await message.bot.delete_message(message.chat.id, message.message_id)
 
 
 def register_user(dp: Dispatcher):
