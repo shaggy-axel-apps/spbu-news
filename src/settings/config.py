@@ -1,8 +1,9 @@
 from settings.const import (
     BOT_TOKEN, ADMINS, USE_REDIS,
     POSTGRES_DB, POSTGRES_USER, POSTGRES_PASS,
+    REDIS_HOST, REDIS_PORT, REDIS_PASSWORD,
 )
-from settings.data import Config, TgBot, DbConfig, Miscellaneous
+from settings.data import CacheConfig, Config, TgBot, DbConfig, Miscellaneous
 
 
 def load_config() -> Config:
@@ -18,6 +19,11 @@ def load_config() -> Config:
             password=POSTGRES_PASS,
             host="db",
             port=5432,
+        ),
+        cache=CacheConfig(
+            host=REDIS_HOST,
+            port=REDIS_PORT,
+            password=REDIS_PASSWORD
         ),
         misc=Miscellaneous()
     )
