@@ -3,7 +3,7 @@ from aiogram.types import CallbackQuery
 
 from spbu_api import StudyDivisionsApi
 from tgbot.handlers.user import user_start
-from tgbot.keyboards import InlineKeyboardPaginator, get_programs_keyboard
+from tgbot.keyboards import InlineKeyboardPaginator
 from tgbot.misc.pagination_functions import count_pages, fill_paginator
 
 
