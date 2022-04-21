@@ -8,6 +8,24 @@ class ApiResponse(NamedTuple):
     response: list[dict]
 
 
+class Educator(NamedTuple):
+    educator_id: int
+    educator_name: str
+
+
+class EventLocation(NamedTuple):
+    is_empty: bool
+    display_name: str
+    has_geographic_coordinates: bool
+    latitude: int
+    longitude: int
+    latitude_value: str
+    longitude_value: str
+    educators_display_text: str
+    has_educators: bool
+    educators: list[Educator]
+
+
 class Event(NamedTuple):
     study_events_timetable_kind_code: int
     start: date
@@ -33,7 +51,8 @@ class Event(NamedTuple):
     is_study: bool
     all_day: bool
     within_the_same_day: bool
-    event_locations: list
+    event_locations: list[EventLocation]
+    educators: list[Educator]
 
 
 class Day(NamedTuple):
