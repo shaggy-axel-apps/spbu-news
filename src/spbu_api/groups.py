@@ -1,15 +1,8 @@
-from typing import NamedTuple
 from spbu_api import SpbuApi
+from spbu_api.models import Group
 
 
-class Group(NamedTuple):
-    group_id: int
-    name: str
-    form: str
-    profiles: str
-
-
-class ProgramsApi(SpbuApi):
+class GroupApi(SpbuApi):
     def __init__(self):
         super().__init__()
         self.API = f"{self.API}/api/v1/progams/""{id}/groups"
