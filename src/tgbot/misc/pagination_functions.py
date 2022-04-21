@@ -24,30 +24,30 @@ def fill_paginator(
     if len(data) < stop:
         stop = len(data)
 
-    for division_index in range(start, stop, 2):
+    for object_index in range(start, stop, 2):
         first_callback = (
             f"{callback_data_prefix}"
-            f"{getattr(data[division_index], callback_data_field)}"
+            f"{getattr(data[object_index], callback_data_field)}"
         )
-        if stop != division_index + 1:
+        if stop != object_index + 1:
             second_callback = (
                 f"{callback_data_prefix}"
-                f"{getattr(data[division_index + 1], callback_data_field)}"
+                f"{getattr(data[object_index + 1], callback_data_field)}"
             )
             paginator.add_before(
                 InlineKeyboardButton(
-                    getattr(data[division_index], data_field),
+                    getattr(data[object_index], data_field),
                     callback_data=first_callback
                 ),
                 InlineKeyboardButton(
-                    getattr(data[division_index + 1], data_field),
+                    getattr(data[object_index + 1], data_field),
                     callback_data=second_callback
                 )
             )
         else:
             paginator.add_before(
                 InlineKeyboardButton(
-                    getattr(data[division_index], data_field),
+                    getattr(data[object_index], data_field),
                     callback_data=first_callback
                 )
             )
