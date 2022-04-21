@@ -56,7 +56,7 @@ async def programs_from_division(query: CallbackQuery):
         previous_keyboard_callback="division_pages#1", paginator=paginator)
 
     await query.bot.send_message(
-        query.from_user.id, f"Программы обучения: {page}",
+        query.from_user.id, f"Направление: {division_alias}\nПрограммы обучения: {page}",
         reply_markup=paginator.markup
     )
     await query.bot.delete_message(
