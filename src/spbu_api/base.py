@@ -1,14 +1,7 @@
-from typing import NamedTuple
-
 import aiohttp
 
 from settings.const import SPBU_API
-
-
-class ApiResponse(NamedTuple):
-    code: int
-    status: str
-    response: list[dict]
+from spbu_api.models import ApiResponse
 
 
 class SpbuApi:

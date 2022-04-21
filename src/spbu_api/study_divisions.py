@@ -1,23 +1,7 @@
-from typing import NamedTuple, Union
+from typing import Union
+
 from spbu_api import SpbuApi
-from spbu_api import ApiResponse
-
-
-class Division(NamedTuple):
-    oid: int
-    alias: str
-    name: str
-
-
-class Program(NamedTuple):
-    program_id: int
-    name: str
-    name_english: str
-    year: int
-    is_empty: bool
-    division_alias: str
-    study_level: str
-    has_courses: bool
+from spbu_api.models import ApiResponse, Division, Program
 
 
 class StudyDivisionsApi(SpbuApi):
