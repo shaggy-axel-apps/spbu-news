@@ -6,6 +6,7 @@ from aiogram.contrib.fsm_storage import memory, redis
 
 from tgbot.filters.admin import AdminFilter
 from tgbot.handlers.admin import register_admin
+from tgbot.handlers.callback import register_callbacks
 from tgbot.handlers.echo import register_echo
 from tgbot.handlers.user import register_user
 from tgbot.middlewares.db import DbMiddleware
@@ -25,7 +26,7 @@ def register_all_filters(dp: Dispatcher):
 def register_all_handlers(dp: Dispatcher):
     register_admin(dp)
     register_user(dp)
-
+    register_callbacks(dp)
     register_echo(dp)
 
 
