@@ -62,17 +62,17 @@ class Day(NamedTuple):
 
 
 class GroupEvent(NamedTuple):
-  student_group_id: int
-  student_group_display_name: str
-  timetable_display_name: str
-  previous_week_monday: date
-  next_week_monday: date
-  is_previous_week_reference_available: bool
-  is_next_week_reference_available: bool
-  is_current_week_reference_available: bool
-  week_display_text: str
-  week_monday: date
-  days: list[Day]
+    student_group_id: int
+    student_group_display_name: str
+    timetable_display_name: str
+    previous_week_monday: date
+    next_week_monday: date
+    is_previous_week_reference_available: bool
+    is_next_week_reference_available: bool
+    is_current_week_reference_available: bool
+    week_display_text: str
+    week_monday: date
+    days: list[Day]
 
 
 class Group(NamedTuple):

@@ -12,7 +12,7 @@ class EventApi(SpbuApi):
     async def get_all_events_for_group(self, group_id: int) -> list[Event]:
         """ Gets a given student group's events for the current week """
         response = await self.send_query(self.API, id=group_id)
-        group = await response.response["Groups"]
+        group = await response.response
         return self.parse_events(group)
 
     def parse_events(group: dict) -> GroupEvent:

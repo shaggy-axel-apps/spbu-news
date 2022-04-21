@@ -1,5 +1,3 @@
-from typing import NamedTuple
-
 import aiohttp
 
 from settings.const import SPBU_API
