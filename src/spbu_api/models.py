@@ -1,5 +1,5 @@
-from datetime import date
-from typing import NamedTuple, Optional
+from datetime import datetime
+from typing import NamedTuple
 
 
 class ApiResponse(NamedTuple):
@@ -9,8 +9,8 @@ class ApiResponse(NamedTuple):
 
 
 class Educator(NamedTuple):
-    educator_id: int
-    educator_name: str
+    full_name: str
+    last_name: str
 
 
 class EventLocation(NamedTuple):
@@ -19,17 +19,12 @@ class EventLocation(NamedTuple):
     has_geographic_coordinates: bool
     latitude: int
     longitude: int
-    latitude_value: str
-    longitude_value: str
-    educators_display_text: str
-    has_educators: bool
-    educators: list[Educator]
 
 
 class Event(NamedTuple):
     study_events_timetable_kind_code: int
-    start: date
-    end: date
+    start: datetime
+    end: datetime
     subject: str
     time_interval_string: str
     date_with_time_interval_string: str
@@ -38,16 +33,12 @@ class Event(NamedTuple):
     educators_display_text: str
     has_educators: bool
     is_cancelled: bool
-    contingent_unit_name: str
-    division_and_course: str
-    is_assigned: bool
     time_was_changed: bool
     locations_were_changed: bool
     educators_were_reassigned: bool
     elective_disciplines_count: int
     is_elective: bool
     has_the_same_time_as_previous_item: bool
-    contingent_units_display_test: Optional[str]
     is_study: bool
     all_day: bool
     within_the_same_day: bool
@@ -56,7 +47,7 @@ class Event(NamedTuple):
 
 
 class Day(NamedTuple):
-    day: date
+    day: datetime
     day_string: str
     day_study_events: list[Event]
 
@@ -65,13 +56,13 @@ class GroupEvent(NamedTuple):
     student_group_id: int
     student_group_display_name: str
     timetable_display_name: str
-    previous_week_monday: date
-    next_week_monday: date
+    previous_week_monday: datetime
+    next_week_monday: datetime
     is_previous_week_reference_available: bool
     is_next_week_reference_available: bool
     is_current_week_reference_available: bool
     week_display_text: str
-    week_monday: date
+    week_monday: datetime
     days: list[Day]
 
 
