@@ -16,5 +16,10 @@ REDIS_HOST = os.environ.get('REDIS_HOST')
 REDIS_PORT = int(os.environ.get('REDIS_PORT'))
 REDIS_PASSWORD = os.environ.get('REDIS_PASSWORD')
 
-# API
+# API, URLs, Headers
 SPBU_API = "https://timetable.spbu.ru/api/v1/"
+SUT_URL = "https://www.sut.ru/studentu/raspisanie/raspisanie-zanyatiy-studentov-ochnoy-i-vecherney-form-obucheniya"
+SUT_HEADERS = {
+    'User-Agent': os.environ.get("HEADERS"),
+    'Referer': 'https://www.sut.ru/'
+}
