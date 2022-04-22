@@ -1,6 +1,9 @@
+from datetime import datetime, timedelta
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from settings.const import WEEKDAYS_NAMES
 
 from spbu_api import StudyDivisionsApi
+from sut_scraper.models import EventDay
 
 
 async def start_keyboard() -> InlineKeyboardMarkup:
@@ -20,12 +23,53 @@ async def start_keyboard() -> InlineKeyboardMarkup:
     return keyboard
 
 
-async def get_programs_keyboard(division_alias: str) -> InlineKeyboardMarkup:
+def get_timetable_keyboard(event_day: EventDay) -> InlineKeyboardMarkup:
     keyboard = InlineKeyboardMarkup()
-    division_api = StudyDivisionsApi()
-    for program in await division_api.get_programs(division_alias):
-        keyboard.add(InlineKeyboardButton(
-            f"{program.year}{program.name}",
-            callback_data=f"program:{program.program_id}"
-        ))
+
+    day = datetime.strptime(event_day.day, "%Y-%m-%d")
+    next_day = day + timedelta(days=1)
+    previous_day = day - timedelta(days=1)
+    previous_day.day
+    next_week = day + timedelta(days=7)
+    previous_week = day - timedelta(days=7)
+
+    keyboard.row(
+        InlineKeyboardButton(
+            (f"{previous_day.day}.{previous_day.month} "
+             f"{WEEKDAYS_NAMES[datetime.weekday(previous_day)]}"),
+            callback_data=(
+                f"timetable#{datetime.strftime(previous_day, '%Y-%m-%d')}"
+                f"#{event_day.group_id}"
+            )
+        ),
+        InlineKeyboardButton(
+            (f"{next_day.day}.{next_day.month} "
+             f"{WEEKDAYS_NAMES[datetime.weekday(next_day)]}"),
+            callback_data=(
+                f"timetable#{datetime.strftime(next_day, '%Y-%m-%d')}"
+                f"#{event_day.group_id}"
+            )
+        )
+    )
+
+    keyboard.row(
+        InlineKeyboardButton(
+            (f"{previous_week.day}.{previous_week.month} "
+             f"{WEEKDAYS_NAMES[datetime.weekday(previous_week)]}"),
+            callback_data=(
+                f"timetable#{datetime.strftime(previous_week, '%Y-%m-%d')}"
+                f"#{event_day.group_id}"
+            )
+        ),
+        InlineKeyboardButton(
+            (f"{next_week.day}.{next_week.month} "
+             f"{WEEKDAYS_NAMES[datetime.weekday(next_week)]}"),
+            callback_data=(
+                f"timetable#{datetime.strftime(next_week, '%Y-%m-%d')}"
+                f"#{event_day.group_id}"
+            )
+        )
+    )
+
     return keyboard
+    

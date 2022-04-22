@@ -1,4 +1,4 @@
-from tgbot.keyboards.inline import start_keyboard, get_programs_keyboard
+from tgbot.keyboards.inline import start_keyboard, get_timetable_keyboard
 from tgbot.keyboards.paginator import InlineKeyboardPaginator
 
 
