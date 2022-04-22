@@ -7,7 +7,7 @@ from spbu_api.models import Event, GroupEvent, Day, EventLocation, Educator
 class EventApi(SpbuApi):
     def __init__(self):
         super().__init__()
-        self.API = f"{self.API}/api/v1/groups/""{id}/events"
+        self.API = f"{self.API}groups/""{id}/events/"
 
     async def get_all_events_for_group(self, group_id: int) -> list[Event]:
         """ Gets a given student group's events for the current week """
