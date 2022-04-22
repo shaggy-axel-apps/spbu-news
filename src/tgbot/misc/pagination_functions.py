@@ -16,7 +16,8 @@ def fill_paginator(
     callback_data_prefix: str, callback_data_field: str,
     previous_keyboard_callback: str,
     paginator: InlineKeyboardPaginator,
-    row_size: int = 2, page_size: int = 10
+    row_size: int = 2, page_size: int = 10,
+    without_page_in_callback: bool = False
 ) -> InlineKeyboardPaginator:
     """ create keyboard with pages pagination """
     start = paginator.current_page * page_size - page_size
@@ -33,11 +34,15 @@ def fill_paginator(
             f"{callback_data_prefix}#"
             f"{getattr(data[object_index], callback_data_field)}#1"
         )
+        if without_page_in_callback:
+            first_callback.removesuffix("#1")
         if stop != object_index + 1 and row_size != 1:
             second_callback = (
                 f"{callback_data_prefix}#"
                 f"{getattr(data[object_index + 1], callback_data_field)}#1"
             )
+            if without_page_in_callback:
+                second_callback.removesuffix("#1")
             paginator.add_before(
                 InlineKeyboardButton(
                     ":".join(
