@@ -1,7 +1,6 @@
 from aiogram import Dispatcher
 from aiogram.types import CallbackQuery
 
-from spbu_api import StudyDivisionsApi
 from sut_scraper.scraper import Scraper
 from tgbot.handlers.user import user_start
 from tgbot.keyboards import InlineKeyboardPaginator

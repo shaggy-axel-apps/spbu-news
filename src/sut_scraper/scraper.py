@@ -28,4 +28,3 @@ class Scraper(BaseScraper):
                 ]
                 break
         return groups
-
