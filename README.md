@@ -1,6 +1,6 @@
 # Telegram-Bot-Template
 ## Stack
-Python, Aiogram, Aiohttp,
+Python, Aiogram, Aiohttp, BeautifulSoup,
 Docker, PostgreSQL, Redis
 ## Setup
 ```bash
