@@ -50,5 +50,5 @@ class Scraper(BaseScraper):
                 subject=subject, educator=educator,
                 classroom=classroom, reason=reason,
             ))
-        
+
         return EventDay(events=events, group_id=group_id, day=day, week_day=week_day)

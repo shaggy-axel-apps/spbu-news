@@ -58,7 +58,8 @@ async def send_groups(query: CallbackQuery):
     paginator = fill_paginator(
         data=groups, data_fields=("name",),
         callback_data_prefix="timetable#today", callback_data_field="group_id",
-        previous_keyboard_callback="division_pages#1", paginator=paginator, without_page_in_callback=True)
+        previous_keyboard_callback="division_pages#1",
+        paginator=paginator, without_page_in_callback=True)
 
     await query.bot.send_message(
         query.from_user.id, (

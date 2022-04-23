@@ -4,5 +4,5 @@ from tgbot.keyboards.paginator import InlineKeyboardPaginator
 
 __all__ = [
     "InlineKeyboardPaginator",
-    "start_keyboard", "get_programs_keyboard"
+    "start_keyboard", "get_timetable_keyboard"
 ]
