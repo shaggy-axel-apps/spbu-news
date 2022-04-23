@@ -16,3 +16,6 @@ PROJECT_NAME=template
 REDIS_HOST=cache
 REDIS_PORT=6379
 REDIS_PASSWORD=superstrongpassword
+
+# SCRAPER
+HEADERS=Mozilla/5.0 (Macintosh; Intel Mac OS X 11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36
