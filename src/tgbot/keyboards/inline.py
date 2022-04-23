@@ -84,4 +84,3 @@ def get_timetable_keyboard(event_day: EventDay) -> InlineKeyboardMarkup:
     keyboard.row(InlineKeyboardButton('Назад', callback_data="division_pages#1"))
 
     return keyboard
-    
