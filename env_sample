@@ -2,7 +2,7 @@
 BOT_NAME=template
 BOT_TOKEN=123456:ABCDEF_abcdef
 ADMINS=123456,654321
-USE_REDIS=False
+USE_REDIS=True
 
 # DATABASE
 POSTGRES_DB=teplate-db
@@ -11,3 +11,11 @@ POSTGRES_PASSWORD=password
 
 # DOCKER
 PROJECT_NAME=template
+
+# REDIS
+REDIS_HOST=cache
+REDIS_PORT=6379
+REDIS_PASSWORD=superstrongpassword
+
+# SCRAPER
+HEADERS=Mozilla/5.0 (Macintosh; Intel Mac OS X 11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36

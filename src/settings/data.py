@@ -11,6 +11,13 @@ class DbConfig:
 
 
 @dataclass
+class CacheConfig:
+    host: str
+    port: int
+    password: str
+
+
+@dataclass
 class TgBot:
     token: str
     admin_ids: list[int]
@@ -25,5 +32,6 @@ class Miscellaneous:
 @dataclass
 class Config:
     tg_bot: TgBot
+    cache: CacheConfig
     db: DbConfig
     misc: Miscellaneous
