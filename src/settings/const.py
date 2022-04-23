@@ -37,3 +37,16 @@ WEEKDAYS_NAMES = {
     6: "Сб.",
     7: "Вс."
 }
+
+EMOJIES = {
+    'timetable': ':five_o’clock:',         # 🕔
+    'date': ':tear-off_calendar:',         # 📆
+    'classroom': ':school:',               # 🏫
+    'educator': ':man_teacher:',           # 👨‍🏫
+    'group': ':busts_in_silhouette:',      # 👥
+    'division': ':card_index_dividers:',   # 🗂
+    'prev_week': ':fast_reverse_button:',  # ⏪
+    'next_week': ':fast-forward_button:',  # ⏩
+    'prev_day': ':left_arrow:',            # ⬅️
+    'next_day': ':right_arrow:'            # ➡️
+}

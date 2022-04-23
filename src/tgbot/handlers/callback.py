@@ -1,8 +1,10 @@
 from datetime import datetime
+
 from aiogram import Dispatcher
 from aiogram.types import CallbackQuery
-from settings.const import WEEKDAYS_NAMES
+import emoji
 
+from settings.const import EMOJIES, WEEKDAYS_NAMES
 from sut_scraper.scraper import Scraper
 from tgbot.handlers.user import user_start
 from tgbot.keyboards import InlineKeyboardPaginator, get_timetable_keyboard
@@ -28,7 +30,7 @@ async def send_divisions(query: CallbackQuery):
         previous_keyboard_callback="start", paginator=paginator, row_size=1, page_size=5)
 
     await query.bot.send_message(
-        query.from_user.id, f"Направления: {page}",
+        query.from_user.id, emoji.emojize(EMOJIES["division"]) + f" Направления: {page}",
         reply_markup=paginator.markup
     )
     await query.bot.delete_message(
@@ -59,7 +61,10 @@ async def send_groups(query: CallbackQuery):
         previous_keyboard_callback="division_pages#1", paginator=paginator, without_page_in_callback=True)
 
     await query.bot.send_message(
-        query.from_user.id, f"Направление: {division_alias}\nГруппы: {page}",
+        query.from_user.id, (
+            emoji.emojize(EMOJIES["division"]) + f" Направление: {division_alias}\n" +
+            emoji.emojize(EMOJIES["group"]) + f" Группы: {page}"
+        ),
         reply_markup=paginator.markup
     )
     await query.bot.delete_message(
@@ -78,12 +83,14 @@ async def send_timetable(query: CallbackQuery):
     keyboard = get_timetable_keyboard(event_day)
 
     week_day = WEEKDAYS_NAMES[datetime.weekday(datetime.strptime(day, "%Y-%m-%d"))]
-    message = f"`{week_day} {event_day.day}`\n\n"
+    message = emoji.emojize(f"{EMOJIES['date']}  `{week_day} {event_day.day}`\n\n")
     for event in event_day.events:
-        message += (
+        message += emoji.emojize(
             f"*{event.subject}*\n*{event.reason}*\n"
-            f"_Преподователь: {event.educator}_\n_Аудитория:_ `{event.classroom}`\n\n"
+            f"{EMOJIES['educator']} _Преподователь: {event.educator}_\n"
+            f"{EMOJIES['classroom']} _Аудитория:_ `{event.classroom}`\n\n"
         )
+
     await query.bot.send_message(
         query.from_user.id, text=message,
         reply_markup=keyboard, parse_mode="Markdown"
