@@ -32,7 +32,7 @@ class Scraper(BaseScraper):
 
     async def get_timetable(self, group_id: int, day: str):
         soup = await self.get_soup(f"{self.BASE_URL}?group={group_id}&date={day}")
-        week_day = datetime.weekday(datetime.strptime(day, "%Y-%m-%d"))
+        week_day = datetime.weekday(datetime.strptime(day, "%Y-%m-%d")) + 1
 
         events = []
         for event in soup.find_all('div', class_=f"rasp-day{week_day}"):
