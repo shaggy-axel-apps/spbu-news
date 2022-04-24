@@ -1,4 +1,6 @@
 from datetime import datetime
+
+from bs4 import BeautifulSoup
 from sut_scraper import BaseScraper
 from sut_scraper.models import Division, Event, EventDay, Group
 
@@ -31,7 +33,7 @@ class Scraper(BaseScraper):
         return groups
 
     async def get_timetable(self, group_id: int, day: str):
-        soup = await self.get_soup(f"{self.BASE_URL}?group={group_id}&date={day}")
+        soup: BeautifulSoup = await self.get_soup(f"{self.BASE_URL}?group={group_id}&date={day}")
         week_day = datetime.weekday(datetime.strptime(day, "%Y-%m-%d")) + 1
 
         events = []
@@ -40,6 +42,10 @@ class Scraper(BaseScraper):
                 continue
             subject = event.find('div', class_="vt240").text.strip()
             educator = event.find('div', class_="vt241").text.strip()
+            time = event.find_previous('div', class_="vt244").find('div', class_="vt239")
+            time = time.text.removeprefix(time.find('div', class_="vt283").text).strip()
+            time = f"{time[:5]} - {time[5:]}"
+
             try:
                 classroom = event.find('div', class_="vt242").text.strip()
             except AttributeError:
@@ -49,6 +55,7 @@ class Scraper(BaseScraper):
             events.append(Event(
                 subject=subject, educator=educator,
                 classroom=classroom, reason=reason,
+                time=time
             ))
 
         return EventDay(events=events, group_id=group_id, day=day, week_day=week_day)

@@ -1,4 +1,5 @@
 from aiogram import types, Dispatcher
+from tgbot.keyboards.inline import return_to_start_keyboard
 
 from ya_rasp_api import YandexRaspisanieApi
 from settings.const import GOOGLE_MAPS, YANDEX_MAPS
@@ -18,7 +19,10 @@ async def get_stations(message: types.Message):
         )
         for station in stations
     )
-    await message.answer(reply, parse_mode="Markdown")
+    keyboard = return_to_start_keyboard()
+    await message.answer(reply, parse_mode="Markdown", reply_markup=keyboard)
+    await message.delete_reply_markup()
+    await message.delete()
 
 
 def register_messages(dp: Dispatcher):

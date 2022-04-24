@@ -16,13 +16,15 @@ async def start_keyboard() -> InlineKeyboardMarkup:
         InlineKeyboardButton(
             emoji.emojize(f"{EMOJIES['timetable']} Расписание занятий"),
             callback_data="division_pages#1"))
+    return keyboard
+
+
+def return_to_start_keyboard() -> InlineKeyboardMarkup:
+    keyboard = InlineKeyboardMarkup()
     keyboard.add(
         InlineKeyboardButton(
-            "События", callback_data="event_pages#1"),
-        InlineKeyboardButton(
-            "Info List", callback_data="spbu_info"))
-    keyboard.add(InlineKeyboardButton(
-        "Аккаунт", callback_data="account_info"))
+            "Назад",
+            callback_data="start"))
     return keyboard
 
 

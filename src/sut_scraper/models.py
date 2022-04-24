@@ -24,6 +24,7 @@ class Event(NamedTuple):
     educator: str
     classroom: str
     reason: str
+    time: str
 
 
 class EventDay(NamedTuple):
