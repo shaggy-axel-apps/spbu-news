@@ -8,6 +8,7 @@ from settings.const import EMOJIES, WEEKDAYS_NAMES
 from sut_scraper.scraper import Scraper
 from tgbot.handlers.user import user_start
 from tgbot.keyboards import InlineKeyboardPaginator, get_timetable_keyboard
+from tgbot.keyboards.reply import request_location_keyboard
 from tgbot.misc.pagination_functions import count_pages, fill_paginator
 
 
@@ -101,6 +102,21 @@ async def send_timetable(query: CallbackQuery):
     )
 
 
+async def request_location(query: CallbackQuery):
+    message = (
+        emoji.emojize(f"{EMOJIES['smile']} __Нажмите на кнопку ниже, ") +
+        emoji.emojize(f"чтобы поделиться локацией__ {EMOJIES['maps']}")
+    )
+    keyboard = request_location_keyboard()
+    await query.bot.send_message(
+        query.from_user.id, text=message,
+        reply_markup=keyboard, parse_mode="Markdown"
+    )
+    await query.bot.delete_message(
+        query.message.chat.id, query.message.message_id
+    )
+
+
 async def start_with_callback(query: CallbackQuery):
     await user_start(query.message)
 
@@ -114,3 +130,5 @@ def register_callbacks(dp: Dispatcher):
         send_divisions, lambda query: "division_pages" in query.data, state="*")
     dp.register_callback_query_handler(
         send_timetable, lambda query: "timetable" in query.data, state="*")
+    dp.register_callback_query_handler(
+        request_location, lambda query: "bus" == query.data, state="*")
