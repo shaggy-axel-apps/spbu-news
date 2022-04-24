@@ -23,6 +23,6 @@ async def get_stations(message: types.Message):
 
 def register_messages(dp: Dispatcher):
     dp.register_message_handler(
-        get_stations, state="*", 
+        get_stations, state="*",
         content_types=['location']
     )

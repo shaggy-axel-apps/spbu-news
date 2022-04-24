@@ -4,13 +4,12 @@ from aiogram import Dispatcher
 from aiogram.types import CallbackQuery
 import emoji
 
-from settings.const import EMOJIES, WEEKDAYS_NAMES, GOOGLE_MAPS, YANDEX_MAPS
+from settings.const import EMOJIES, WEEKDAYS_NAMES
 from sut_scraper.scraper import Scraper
 from tgbot.handlers.user import user_start
 from tgbot.keyboards import InlineKeyboardPaginator, get_timetable_keyboard
 from tgbot.keyboards.reply import request_location_keyboard
 from tgbot.misc.pagination_functions import count_pages, fill_paginator
-from ya_rasp_api.worker import YandexRaspisanieApi
 
 
 async def send_divisions(query: CallbackQuery):

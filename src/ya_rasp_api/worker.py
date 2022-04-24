@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from ya_rasp_api.base import BaseYandexApi
-from ya_rasp_api.models import *
+from ya_rasp_api.models import Station, Schedule, StationTimeTable, IntervalSchedule
 
 
 class YandexRaspisanieApi(BaseYandexApi):
