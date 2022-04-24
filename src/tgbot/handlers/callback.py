@@ -88,7 +88,7 @@ async def send_timetable(query: CallbackQuery):
     message = emoji.emojize(f"{EMOJIES['date']}  `{week_day} {event_day.day}`\n\n")
     for event in event_day.events:
         message += emoji.emojize(
-            f"*{event.subject}*\n*{event.reason}*\n"
+            f"`{event.time}`\n*{event.subject}*\n*{event.reason}*\n"
             f"{EMOJIES['educator']} _Преподователь: {event.educator}_\n"
             f"{EMOJIES['classroom']} _Аудитория:_ `{event.classroom}`\n\n"
         )
