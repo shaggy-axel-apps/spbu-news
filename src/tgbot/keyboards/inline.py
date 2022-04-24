@@ -11,7 +11,8 @@ async def start_keyboard() -> InlineKeyboardMarkup:
     keyboard = InlineKeyboardMarkup()
     keyboard.add(
         InlineKeyboardButton(
-            "Расписание автобусов", callback_data="autobus_pages#1"),
+            emoji.emojize(f"{EMOJIES['bus']} Расписание автобусов"),
+            callback_data="bus"),
         InlineKeyboardButton(
             emoji.emojize(f"{EMOJIES['timetable']} Расписание занятий"),
             callback_data="division_pages#1"))

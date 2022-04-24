@@ -9,6 +9,7 @@ from tgbot.handlers.admin import register_admin
 from tgbot.handlers.callback import register_callbacks
 from tgbot.handlers.echo import register_echo
 from tgbot.handlers.user import register_user
+from tgbot.handlers.message import register_messages
 from tgbot.middlewares.db import DbMiddleware
 from settings.config import load_config
 
@@ -55,6 +56,7 @@ async def main():
     register_all_middlewares(dp)
     register_all_filters(dp)
     register_all_handlers(dp)
+    register_messages(dp)
 
     # start
     try:
