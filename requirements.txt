@@ -4,3 +4,4 @@ aioredis==2.0
 beautifulsoup4==4.11.1
 emoji==1.7.0
 lxml==4.8.0
+sqlalchemy==1.4.35
