@@ -15,8 +15,6 @@ services:
       - db
       - cache
     env_file: .env
-    networks:
-      - tg_bot
 
   db:
     image: postgres:12.0-alpine
@@ -36,10 +34,6 @@ services:
     command: redis-server --save 20 1 --loglevel warning --requirepass ${REDIS_PASSWORD}
     volumes: 
       - redis_data:/data
-
-networks:
-  tg_bot:
-    driver: bridge
 
 volumes:
   postgres_data:

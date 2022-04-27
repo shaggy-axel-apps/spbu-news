@@ -10,6 +10,8 @@ USE_REDIS = bool(os.environ.get("USE_REDIS"))
 POSTGRES_DB = os.environ.get('POSTGRES_DB')
 POSTGRES_USER = os.environ.get('POSTGRES_USER')
 POSTGRES_PASS = os.environ.get('POSTGRES_PASS')
+POSTGRES_HOST = "localhost"
+POSTGRES_PORT = 5432
 
 # REDIS
 REDIS_HOST = os.environ.get('REDIS_HOST')

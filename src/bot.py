@@ -1,8 +1,10 @@
 import asyncio
 import logging
+import sys
 
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage import memory, redis
+from db import migrate
 
 from tgbot.filters.admin import AdminFilter
 from tgbot.handlers.admin import register_admin
@@ -68,6 +70,8 @@ async def main():
 
 
 if __name__ == '__main__':
+    if 'migrate' in sys.argv:
+        migrate()
     try:
         asyncio.run(main())
     except (KeyboardInterrupt, SystemExit):
