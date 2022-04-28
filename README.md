@@ -4,11 +4,16 @@ Python, Aiogram, Aiohttp, BeautifulSoup,
 Docker, PostgreSQL, Redis
 ## Setup
 ```bash
+# change values in `.env` after this command
 cat env_sample > .env
-# change values in .env
 
+# building bot service and run serivces
 docker-compose build
 docker-compose up -d
+
+# database migrations
+docker-compose exec bot bash
+python src/bot.py migrate
 ```
 
 ## Get data from
