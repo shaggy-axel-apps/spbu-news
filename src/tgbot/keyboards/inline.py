@@ -7,7 +7,7 @@ from settings.const import EMOJIES, WEEKDAYS_NAMES
 from sut_scraper.models import EventDay
 
 
-async def start_keyboard() -> InlineKeyboardMarkup:
+def base_start_keyboard() -> InlineKeyboardMarkup:
     keyboard = InlineKeyboardMarkup()
     keyboard.add(
         InlineKeyboardButton(
@@ -19,12 +19,30 @@ async def start_keyboard() -> InlineKeyboardMarkup:
     return keyboard
 
 
-def return_to_start_keyboard() -> InlineKeyboardMarkup:
-    keyboard = InlineKeyboardMarkup()
+def new_user_keyboard() -> InlineKeyboardMarkup:
+    keyboard = base_start_keyboard()
     keyboard.add(
         InlineKeyboardButton(
-            "Назад",
-            callback_data="start"))
+            emoji.emojize(f"{EMOJIES['notification']} Уведомления"),
+            callback_data="notifications")
+    )
+    return keyboard
+
+
+def saved_user_keyboard(telegram_id: int) -> InlineKeyboardMarkup:
+    keyboard = new_user_keyboard()
+    keyboard.add(
+        InlineKeyboardButton(
+            emoji.emojize(f"{EMOJIES['reset']} Сброс настроек"),
+            callback_data="reset_settings"
+        ),
+    )
+    return keyboard
+
+
+def return_to_start_keyboard() -> InlineKeyboardMarkup:
+    keyboard = InlineKeyboardMarkup()
+    keyboard.add(InlineKeyboardButton("Назад", callback_data="start"))
     return keyboard
 
 

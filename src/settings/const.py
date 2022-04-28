@@ -9,8 +9,8 @@ USE_REDIS = bool(os.environ.get("USE_REDIS"))
 # DATABASE
 POSTGRES_DB = os.environ.get('POSTGRES_DB')
 POSTGRES_USER = os.environ.get('POSTGRES_USER')
-POSTGRES_PASS = os.environ.get('POSTGRES_PASS')
-POSTGRES_HOST = "localhost"
+POSTGRES_PASS = os.environ.get('POSTGRES_PASSWORD')
+POSTGRES_HOST = "db"
 POSTGRES_PORT = 5432
 
 # REDIS
@@ -58,5 +58,7 @@ EMOJIES = {
     'next_day': ':right_arrow:',                  # ➡️
     'bus': ':bus:',                               # 🚌
     'smile': ':smiling_face_with_smiling_eyes:',  # 😊
-    'maps': ':world_map:'                         # 🗺
+    'maps': ':world_map:',                        # 🗺
+    'notification': ':bell:',                     # 🔔
+    'reset': ':cross_mark:',                      # ❌
 }

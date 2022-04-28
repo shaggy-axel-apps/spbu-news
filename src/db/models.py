@@ -10,7 +10,7 @@ Base = declarative_base()
 
 class Group(Base):
     """ Группы в универе, следующая пара с датой и временем """
-    __tablename__ = 'group'
+    __tablename__ = 'spb_group'
     id = sq.Column(sq.Integer, primary_key=True, autoincrement=True)
     group_alias = sq.Column(sq.String, unique=True)
     next_lesson_at = sq.Column(sq.DateTime)
@@ -20,20 +20,20 @@ class Group(Base):
 
 class Notification(Base):
     """ Уведомления о занятии группы """
-    __tablename__ = 'notification'
+    __tablename__ = 'spb_notification'
     id = sq.Column(sq.Integer, primary_key=True, autoincrement=True)
     notify_for = sq.Column(sq.Integer)  # время в секундах за сколько надо уведомить
 
 
 class User(Base):
     """ Пользователь telegram-бота """
-    __tablename__ = 'user'
+    __tablename__ = 'spb_user'
     id = sq.Column(sq.Integer, primary_key=True, autoincrement=True)
     telegram_id = sq.Column(sq.Integer, unique=True)
     group = sq.Column(sq.Integer, sq.ForeignKey(
-        'group.id', ondelete='SET NULL'), nullable=True)
+        'spb_group.id', ondelete='SET NULL'), nullable=True)
     notification = sq.Column(sq.Integer, sq.ForeignKey(
-        'notification.id', ondelete='SET NULL'), nullable=True)
+        'spb_notification.id', ondelete='SET NULL'), nullable=True)
 
 
 def migrate(**options):

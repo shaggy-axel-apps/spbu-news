@@ -72,7 +72,8 @@ async def main():
 if __name__ == '__main__':
     if 'migrate' in sys.argv:
         migrate()
-    try:
-        asyncio.run(main())
-    except (KeyboardInterrupt, SystemExit):
-        logger.error("Bot stopped!")
+    else:
+        try:
+            asyncio.run(main())
+        except (KeyboardInterrupt, SystemExit):
+            logger.error("Bot stopped!")

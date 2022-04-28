@@ -9,7 +9,7 @@ from settings.const import (
 from settings.data import CacheConfig, Config, TgBot, Miscellaneous
 
 
-engine=create_engine(
+engine = create_engine(
     (f'postgresql://{POSTGRES_USER}:{POSTGRES_PASS}'
      f'@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}'),
     client_encoding='utf8'
